@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%logger{20}.%method:%line]- %msg%n</pattern>
+		</layout>
+	</appender>
+	
+	<appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>C:/logs/jkrentacar/jkrentacar.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>jkrentacar.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- 30일 지난 파일은 삭제한다. -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level value="info" />
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%logger{20}.%method:%line] - %msg %n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+	</appender>
+
+	<!-- RULES for logging DEBUG < INFO < WARN < ERROR < FATAL. -->
+	<!-- additivity=”false” 속성을 빠트리면 같은 로그가 두번씩 찍히는 문제가 발생한다. --> 
+	<!-- 패키지별로 지정 가능 -->
+	<logger name="com.jk.jkrentacar" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="LOGFILE" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	
+	<!-- mybatis log -->
+	<logger name="jdbc.connection" additivity="false">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.audit" additivity="false">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.sqlonly">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="debug" />
+	</logger>
+
+	<root>
+		<level value="info" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+	
+</configuration>
