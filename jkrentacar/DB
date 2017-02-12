@@ -1,0 +1,99 @@
+
+create table JK_USER_INFO (
+  id varchar2(20),
+  name varchar2(50),
+  password varchar2(20),
+  email varchar2(100),
+  phone varchar2(20),
+  address1 varchar2(100),
+  address2 varchar2(100),
+  zipcode varchar2(100),
+  create_date date,
+  modify_date date);
+
+create table JK_ADMIN_INFO (
+  id varchar2(20),
+  name varchar2(50),
+  password varchar2(20),
+  email varchar2(100),
+  authority varchar2(20));
+  
+create table JK_ADMIN_INFO (
+  id varchar2(20),
+  name varchar2(50),
+  password varchar2(20),
+  email varchar2(100),
+  authority varchar2(20));
+  
+create table JK_RESERVATION (
+  rev_no varchar2(20),
+  rev_id varchar2(20),
+  rev_branch_no varchar2(20),
+  rev_rent_date date,
+  rev_return_date date,
+  rev_car_no varchar2(20),
+  rev_insure varchar2(20),
+  rev_state varchar2(20),
+  rev_license_type varchar2(30),
+  rev_license_num varchar2(20));
+  
+create table JK_BRANCH (
+  branch_no varchar2(20),
+  branch_name varchar2(50),
+  branch_addr varchar2(200),
+  branch_tel varchar2(30));
+  
+create table JK_CAR (
+  car_no varchar2(20),
+  car_type varchar2(50),
+  car_num varchar2(50),
+  car_license_type varchar2(50),
+  car_name varchar2(50),
+  car_branch_no varchar2(20),
+  car_reg_date date);
+
+create table JK_PAYMENT (
+  pay_no varchar2(20),
+  rev_no varchar2(20),
+  pay_type varchar2(50),
+  pay_charge varchar2(50),
+  pay_date date,
+  pay_state varchar2(20));  
+  
+create table JK_BOARD_NOTICE(
+  content_num number,
+  content_writer varchar2(100),
+  reg_date date,
+  read_count number,
+  ref number,
+  re_step number,
+  re_level number,
+  content varchar2(1000),
+  notice varchar2(100));
+   
+create table JK_BOARD_NOTICE_COMMENT(
+ comment_num number,
+ content_num number,
+ commenter varchar2(20),
+ commentt varchar2(400),
+ reg_date date);
+  
+create table JK_BOARD_FAQ(
+  content_num number,
+  content_writer varchar2(100),
+  reg_date date,
+  read_count number,
+  ref number,
+  re_step number,
+  re_level number,
+  content varchar2(1000),
+  notice varchar2(100));
+   
+create table JK_BOARD_FAQ_COMMENT(
+ comment_num number,
+ content_num number,
+ commenter varchar2(20),
+ commentt varchar2(400),
+ reg_date date);
+  
+ 
